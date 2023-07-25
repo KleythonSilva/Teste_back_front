@@ -1,0 +1,6 @@
+<div *ngFor="let person of people">
+    <p>{{ person.name }}</p>
+    <button (click)="editPerson(person.id)">Edit</button>
+    <button (click)="deletePerson(person.id)">Delete</button>
+</div>
+  

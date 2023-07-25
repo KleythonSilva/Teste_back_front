@@ -1,0 +1,31 @@
+<form *ngIf="person"> <!-- Usando ngIf para garantir que person exista antes de renderizar o formulário -->
+    <input type="text" [(ngModel)]="formData.name" name="name" [placeholder]="person.name">
+
+    <!-- Seção para adicionar contatos -->
+    <div *ngFor="let contact of person.contacts; let i = index">
+        <input type="text" [(ngModel)]="contact.type" name="type{{i}}" [placeholder]="'Type ' + (i + 1)">
+        <input type="text" [(ngModel)]="contact.value" name="value{{i}}" [placeholder]="'Value ' + (i + 1)">
+        <button (click)="removeContact(i)">Remover</button>
+      </div>
+    
+      <button (click)="addContact()">Adicionar contato</button>
+      <button (click)="createPerson()">Criar</button>
+      <button (click)="updatePerson(person.id)">Atualizar</button>
+</form>
+
+<!--
+<div *ngIf="person">
+    <h2>Editar pessoa</h2>
+    <input type="text" [(ngModel)]="formData.name" name="name" [placeholder]="person.name">
+  
+    <div *ngFor="let contact of person.contacts; let i = index">
+      <input type="text" [(ngModel)]="contact.type" name="type{{i}}" [placeholder]="'Type ' + (i + 1)">
+      <input type="text" [(ngModel)]="contact.value" name="value{{i}}" [placeholder]="'Value ' + (i + 1)">
+      <button (click)="removeContact(i)">Remover</button>
+    </div>
+  
+    <button (click)="addContact()">Adicionar</button>
+    <button (click)="createPerson()" *ngIf="!person.id">Criar</button>
+    <button (click)="updatePerson(person.id)" *ngIf="person.id">Atualizar</button>
+</div>
+-->
