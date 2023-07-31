@@ -20,9 +20,9 @@ export class PersonFormComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const personId = +params.get('id');
+      const personId = params.get('id');
       if (personId) {
-        this.getPersonDetails(personId);
+        this.getPersonDetails(+personId);
       } else {
         this.person = {}; // Inicializa a pessoa como objeto vazio para a criação
       }
